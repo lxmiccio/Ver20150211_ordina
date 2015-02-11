@@ -11,8 +11,7 @@ int main(int argc, char** argv) {
     studente studenteDaAggiungere, studenteInLista;
     studenteLinkedList list=NULL;   // lista degli studenti
     int n;                          // numero degli elementi nella lista
-    int i;
-    
+    int i = 0;
     // Apertura del file di lettura
     inputFile = fopen(fname, "rb");
     if(inputFile == NULL) {
@@ -25,7 +24,8 @@ int main(int argc, char** argv) {
         // studenteDaAggiungere contiene i dati dello studente letto
         
         // TODO Implementare il codice per l'inserimento in ordine del nuovo elemento
-    
+        
+        
     }
     fclose(inputFile);
     

@@ -10,6 +10,10 @@ int size(studenteLinkedList list) {
     int r=0;
     
     // TODO Implementa il corpo della funzione
+    while(list->next != NULL) {
+        r++;
+        list = list->next;
+    }
     
     return r;
 }
@@ -25,6 +29,15 @@ studente getElementAtPosition(studenteLinkedList list, int position) {
     studente r;
     
     // TODO Implementa il corpo della funzione
+
+    int i;
+    if(list != NULL && position > 0 && position < size(list))
+    {
+        for(i = 0; i < position; i++)
+            list = list->next;
+        strcpy(r->nome, list->s->nome);
+        strcpy(r->cognome, list->s->cognome);
+    }
     
     return r;
 }
@@ -44,6 +57,22 @@ studenteLinkedList insertElementAtPosition(studenteLinkedList list, int position
     
     // TODO Implementa il corpo della funzione
     
+    int i;
+    if(position >= 0 && position < size(list))
+    {
+        *r = (studenteLinkedList)malloc(sizeof(LLElement));
+        if(r != NULL)
+        {
+            studenteLinkedList *temp = &list;
+            for(i = 0; i < position; i++)
+                temp = &((*temp)->next);
+            strcpy(r->s->nome, e->nome);
+            strcpy(r->s->cognome, e->cognome);
+            r->next = *temp;
+            *temp = r;
+        }         
+    }
+
     return r;
 }
 
@@ -56,5 +85,12 @@ studenteLinkedList empty(studenteLinkedList list) {
     
     // TODO Implementa il corpo della funzione
     
+    studenteLinkedList elementDelete;
+    while(list != NULL)
+    {
+        elementDelete = list;
+        list = list->next;
+        free(elementDelete);
+    }
     return NULL;
 }
